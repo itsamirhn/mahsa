@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  v2ray:
+    container_name: piaz-v2ray
+    image: ghcr.io/getimages/v2fly-core:v4.45.2
+    restart: unless-stopped
+    environment:
+      - v2ray.vmess.aead.forced=false
+    ports:
+      - "{{ port }}:1310"
+    volumes:
+      - ./config.json:/etc/v2ray/config.json:ro
+      - ./logs:/var/log/v2ray/

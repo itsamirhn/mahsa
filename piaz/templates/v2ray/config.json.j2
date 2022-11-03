@@ -1,0 +1,32 @@
+{
+  "inbounds": [{
+    "tag": "vmess-ws-in",
+    "port": 1310,
+    "protocol": "vmess",
+    "settings": {
+      "clients": [{
+		"id": "{{ secret }}",
+		"alterId": 0
+	  }]
+    },
+    "streamSettings": {
+      "network": "ws",
+      "security": "none",
+      "wsSettings": {
+        "path": "{{ path }}"
+      }
+    }
+  }],
+  "outbounds": [{
+    "tag": "free-out",
+    "protocol": "freedom",
+    "settings": {}
+  }],
+  "routing": {
+    "rules": [{
+      "type": "field",
+      "inboundTag": ["vmess-ws-in"],
+      "outboundTag": "free-out"
+    }]
+  }
+}
