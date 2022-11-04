@@ -32,11 +32,21 @@ parser.add_argument(
     """
 )
 parser.add_argument(
-    "-c",
-    "--config",
-    metavar="v2ray|xui",
+    "-t",
+    "--tool",
     help="""
-    Config to apply on remote server
+    Config tool to apply on remote server. 
     """,
     default="v2ray",
+    choices=["v2ray", "xui", "gost"],
 )
+parser.add_argument(
+    "-c",
+    "--command",
+    help="""
+    Command to override the default command of the tool's container.
+    Example: -c "-L ss://chacha20:password@:8338"
+    """,
+    default="",
+)
+

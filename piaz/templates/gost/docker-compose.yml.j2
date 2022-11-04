@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  gost:
+    container_name: piaz-gost
+    image: ginuerzh/gost:latest
+    restart: unless-stopped
+    network_mode: host
+    command:
+      - "{{ command }}"

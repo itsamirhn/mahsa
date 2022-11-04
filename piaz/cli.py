@@ -1,5 +1,4 @@
-from piaz.config import V2RayConfig
-from piaz.config.xui import XUIConfig
+from piaz.config import V2RayConfig, GostConfig, XUIConfig
 from piaz.options import parser
 
 
@@ -10,13 +9,14 @@ def main():
     if remote == '' or remote == '-':
         remote = None
 
-    config = None
-    if opt.config == 'v2ray':
+    if opt.tool == 'v2ray':
         config = V2RayConfig(remote)
-    elif opt.config == 'xui':
+    elif opt.tool == 'xui':
         config = XUIConfig(remote)
+    elif opt.tool == 'gost':
+        config = GostConfig(remote, opt.command)
     else:
-        print(f"Unknown config: {opt.config}")
+        print(f"Unknown tool: {opt.tool}")
         return
 
     with config:
