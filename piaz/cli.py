@@ -10,7 +10,7 @@ def main():
         'gost': GostConfig,
         'xui': XUIConfig,
     }
-    config = tools[opt.tool](**opt)
+    config = tools[opt.tool](**vars(opt))
 
     with config:
         config.apply()
