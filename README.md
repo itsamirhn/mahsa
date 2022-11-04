@@ -7,7 +7,11 @@ Simple tool for setting up Anti-GFW tools.
 ## Install
 Currently, pip is not supported, so you need to clone this repo to use it.
 ```bash
-git clone https://github.com/itsamirhn/piaz.git
+git clone https://github.com/itsamirhn/piaz.git && cd piaz
+```
+then install dependencies
+```bash
+pip install -r requirements.txt
 ```
 
 ## Usage
