@@ -26,7 +26,7 @@ Run `python -m piaz --help` to see all available options.
 
 ## TODO
 - [ ] Support pip
-- [ ] Support editing remote configs
+- [ ] Support for stop/edit/delete remote configs
 - [ ] Support more protocols (e.g. HTTP, SOCKS, etc.)
 - [ ] Support more tools (e.g. Shadowsocks, ShadowsocksR, etc.)
 - [ ] Add customizable options for pro users.
