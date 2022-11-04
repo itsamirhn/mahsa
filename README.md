@@ -17,10 +17,8 @@ pip install -r requirements.txt
 ## Usage
 You only need to run these commands on your local machine.
 ```bash
-python -m piaz root@1.1.1.1
+python -m piaz root@1.1.1.1  # Replace `1.1.1.1` with your server's IP address.
 ```
-Replace `1.1.1.1` with your server's IP address.
-
 
 Run `python -m piaz --help` to see all available options.
 

@@ -47,6 +47,6 @@ parser.add_argument(
     Command to override the default command of the tool's container.
     Example: -c "-L ss://chacha20:password@:8338"
     """,
-    default="",
+    default=None,
 )
 

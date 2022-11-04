@@ -8,7 +8,8 @@ class GostConfig(DockerComposeConfig):
         self.command = command or '-L=:80'
 
     def get_compose(self):
-        return render_template('gost/docker-compose.yml.j2', command=self.get_command())
+        return render_template('gost/docker-compose.yml.j2', command=self.command)
 
-    def get_command(self):
-        return self.command
+    def apply(self):
+        super().apply()
+        print('Gost is running with command: {}'.format(self.command))
