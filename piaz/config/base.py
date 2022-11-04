@@ -15,7 +15,6 @@ class Config:
     def connect(self):
         print(f"Connecting to {self.host}:{self.port}")
         self.ssh.connect(self.host, username=self.username, password=self.password, port=self.port or 22, timeout=10)
-        print("Connected")
         print("Opening SFTP")
         self.sftp = self.ssh.open_sftp()
 
