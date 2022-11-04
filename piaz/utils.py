@@ -1,5 +1,8 @@
 import ipaddress
+from pathlib import Path
 from urllib.parse import urlparse
+
+from jinja2 import Template
 
 
 def parse_remote(rhostport):
@@ -51,3 +54,10 @@ def parse_remote(rhostport):
         password = None
 
     return username, password, port, host
+
+
+def render_template(name, **kwargs):
+    with open(Path(__file__).parent / 'templates' / name) as file_:
+        template = Template(file_.read())
+    print(f"Rendering template {name}")
+    return template.render(**kwargs)

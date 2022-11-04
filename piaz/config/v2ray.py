@@ -2,15 +2,14 @@ import base64
 import json
 import os
 import uuid
-from pathlib import Path
 
 import qrcode
-from jinja2 import Template
 
-from .docker import DockerConfig
+from .docker import DockerComposeConfig
+from piaz.utils import render_template
 
 
-class V2RayConfig(DockerConfig):
+class V2RayConfig(DockerComposeConfig):
 
     def __init__(self, remote, port=80, path='/ws'):
         super().__init__(remote, 'ghcr.io/getimages/v2fly-core:v4.45.2')
@@ -20,28 +19,22 @@ class V2RayConfig(DockerConfig):
             "path": path
         }
 
-    def render_template(self, name):
-        with open(Path(__file__).parent.parent / 'templates' / 'v2ray' / name) as file_:
-            template = Template(file_.read())
-        print(f"Rendering template {name}")
-        return template.render(**self.config, host=self.host)
+    def get_compose(self):
+        return render_template('v2ray/docker-compose.yml.j2', **self.config)
 
-    def prepare_template(self, name):
-        with open(name, "w") as file_:
-            file_.write(self.render_template(f'{name}.j2'))
-        print(f"Uploading {name}")
-        self.sftp.put(name, f".piaz/v2ray/{name}")
-        os.remove(name)
+    def get_config(self):
+        return render_template('v2ray/config.json.j2', **self.config)
+
+    def prepare_config(self):
+        with open("config.json", "w") as f:
+            f.write(self.get_config())
+        self.sftp.put("config.json", ".piaz/v2ray/config.json")
+        os.remove("config.json")
 
     def prepare(self):
         super().prepare()
-        if not self.file_exists('.piaz/v2ray'):
-            print("Creating .piaz/v2ray directory")
-            self.sftp.mkdir('.piaz/v2ray')
         if not self.file_exists(f".piaz/v2ray/config.json"):
-            self.prepare_template('config.json')
-        if not self.file_exists(f".piaz/v2ray/docker-compose.yml"):
-            self.prepare_template('docker-compose.yml')
+            self.prepare_config()
 
     def get_link(self):
         dic = dict(id=self.config['secret'], aid="0", v="2", tls="", add=self.host, port=self.config["port"], type="",
@@ -50,9 +43,6 @@ class V2RayConfig(DockerConfig):
 
     def apply(self):
         super().apply()
-        _, stdout, stderr = self.ssh.exec_command('docker compose -f .piaz/v2ray/docker-compose.yml up -d')
-        print(stdout.read().decode())
-        print(stderr.read().decode())
         link = self.get_link()
         qr = qrcode.QRCode()
         qr.add_data(link)
