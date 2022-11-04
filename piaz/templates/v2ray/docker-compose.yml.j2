@@ -3,7 +3,7 @@ version: "3"
 services:
   v2ray:
     container_name: piaz-v2ray
-    image: ghcr.io/getimages/v2fly-core:v4.45.2
+    image: {{ image }}
     restart: unless-stopped
     environment:
       - v2ray.vmess.aead.forced=false

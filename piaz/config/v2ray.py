@@ -20,7 +20,7 @@ class V2RayConfig(DockerComposeConfig):
         }
 
     def get_compose(self):
-        return render_template('v2ray/docker-compose.yml.j2', **self.config)
+        return render_template('v2ray/docker-compose.yml.j2', **self.config, image=self.image)
 
     def get_config(self):
         return render_template('v2ray/config.json.j2', **self.config)

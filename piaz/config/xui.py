@@ -7,7 +7,7 @@ class XUIConfig(DockerComposeConfig):
         super().__init__(image='x-ui/x-ui:latest', directory='.piaz/xui', **kwargs)
 
     def get_compose(self):
-        return render_template('xui/docker-compose.yml.j2')
+        return render_template('xui/docker-compose.yml.j2', image=self.image)
 
     def apply(self):
         super().apply()

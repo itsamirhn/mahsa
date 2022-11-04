@@ -10,7 +10,7 @@ class GostConfig(DockerComposeConfig):
         self.command = command or self.DEFAULT_COMMAND
 
     def get_compose(self):
-        return render_template('gost/docker-compose.yml.j2', command=self.command)
+        return render_template('gost/docker-compose.yml.j2', command=self.command, image=self.image)
 
     def apply(self):
         super().apply()
