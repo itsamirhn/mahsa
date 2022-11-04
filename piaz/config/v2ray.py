@@ -11,12 +11,12 @@ from piaz.utils import render_template
 
 class V2RayConfig(DockerComposeConfig):
 
-    def __init__(self, remote, port=80, path='/ws'):
-        super().__init__(remote, 'ghcr.io/getimages/v2fly-core:v4.45.2')
+    def __init__(self, ws_port=80, ws_path='/ws', **kwargs):
+        super().__init__(image='ghcr.io/getimages/v2fly-core:v4.45.2', directory='.piaz/v2ray', **kwargs)
         self.config = {
-            "port": port,
+            "port": ws_port,
             "secret": str(uuid.uuid4()),
-            "path": path
+            "path": ws_path
         }
 
     def get_compose(self):

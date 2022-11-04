@@ -3,8 +3,8 @@ from .docker import DockerComposeConfig
 
 
 class GostConfig(DockerComposeConfig):
-    def __init__(self, remote, command):
-        super().__init__(remote, 'ginuerzh/gost:latest', '.piaz/gost')
+    def __init__(self, command, **kwargs):
+        super().__init__(image='ginuerzh/gost:latest', directory='.piaz/gost', **kwargs)
         self.command = command or '-L=:80'
 
     def get_compose(self):

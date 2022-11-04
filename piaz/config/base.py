@@ -5,7 +5,7 @@ from piaz.utils import parse_remote
 
 class Config:
 
-    def __init__(self, remote):
+    def __init__(self, remote, **kwargs):
         self.username, self.password, self.port, self.host = parse_remote(remote)
         self.port = self.port or 22
         self.ssh = paramiko.SSHClient()

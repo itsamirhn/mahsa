@@ -3,8 +3,8 @@ from .docker import DockerComposeConfig
 
 
 class XUIConfig(DockerComposeConfig):
-    def __init__(self, remote):
-        super().__init__(remote, 'x-ui/x-ui:latest', '.piaz/xui')
+    def __init__(self, **kwargs):
+        super().__init__(image='x-ui/x-ui:latest', directory='.piaz/xui', **kwargs)
 
     def get_compose(self):
         return render_template('xui/docker-compose.yml.j2')

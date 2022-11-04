@@ -22,8 +22,8 @@ class DockerInstallConfig(Config):
 
 class DockerPullConfig(DockerInstallConfig):
 
-    def __init__(self, remote, image):
-        super().__init__(remote)
+    def __init__(self, image, **kwargs):
+        super().__init__(**kwargs)
         self.image = image
 
     def pull(self):
@@ -42,8 +42,8 @@ class DockerPullConfig(DockerInstallConfig):
 
 
 class DockerComposeConfig(DockerPullConfig):
-    def __init__(self, remote, image, directory):
-        super().__init__(remote, image)
+    def __init__(self, directory, **kwargs):
+        super().__init__(**kwargs)
         self.directory = directory
 
     def get_compose(self):

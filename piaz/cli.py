@@ -5,19 +5,12 @@ from piaz.options import parser
 def main():
     opt = parser.parse_args()
 
-    remote = opt.remote
-    if remote == '' or remote == '-':
-        remote = None
-
-    if opt.tool == 'v2ray':
-        config = V2RayConfig(remote)
-    elif opt.tool == 'xui':
-        config = XUIConfig(remote)
-    elif opt.tool == 'gost':
-        config = GostConfig(remote, opt.command)
-    else:
-        print(f"Unknown tool: {opt.tool}")
-        return
+    tools = {
+        'v2ray': V2RayConfig,
+        'gost': GostConfig,
+        'xui': XUIConfig,
+    }
+    config = tools[opt.tool](**opt)
 
     with config:
         config.apply()
