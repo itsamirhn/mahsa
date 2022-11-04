@@ -21,5 +21,14 @@ python -m piaz root@1.1.1.1
 ```
 Replace `1.1.1.1` with your server's IP address.
 
-## Advanced Usage
+
 Run `python -m piaz --help` to see all available options.
+
+## TODO
+- [ ] Support pip
+- [ ] Support editing remote configs
+- [ ] Support more protocols (e.g. HTTP, SOCKS, etc.)
+- [ ] Support more tools (e.g. Shadowsocks, ShadowsocksR, etc.)
+- [ ] Add customizable options for pro users.
+- [ ] Support bridge configuration
+- [ ] Write tests & docs
