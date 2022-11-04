@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 
 
-class PArgumentParser(ArgumentParser):
+class MArgumentParser(ArgumentParser):
     def convert_arg_line_to_args(self, arg_line):
         # Ignore comments
         if arg_line.startswith("#"):
@@ -21,8 +21,8 @@ class PArgumentParser(ArgumentParser):
         return [arg_line]
 
 
-parser = PArgumentParser(
-    prog="piaz",
+parser = MArgumentParser(
+    prog="Mahsa",
 )
 parser.add_argument(
     "remote",

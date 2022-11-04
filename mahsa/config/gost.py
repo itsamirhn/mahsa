@@ -1,12 +1,12 @@
-from piaz.utils import render_template
+from mahsa.utils import render_template
 from .docker import DockerComposeConfig
 
 
 class GostConfig(DockerComposeConfig):
-    DEFAULT_COMMAND = '-L=relay+tls://piaz:piazche@:6121'
+    DEFAULT_COMMAND = '-L=relay+tls://mahsa:freedom@:6121'
 
     def __init__(self, command, **kwargs):
-        super().__init__(image='ginuerzh/gost:latest', directory='.piaz/gost', **kwargs)
+        super().__init__(image='ginuerzh/gost:latest', directory='.mahsa/gost', **kwargs)
         self.command = command or self.DEFAULT_COMMAND
 
     def get_compose(self):

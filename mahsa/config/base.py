@@ -1,6 +1,6 @@
 import paramiko
 
-from piaz.utils import parse_remote
+from mahsa.utils import parse_remote
 
 
 class Config:
@@ -37,9 +37,9 @@ class Config:
             return False
 
     def prepare(self):
-        if not self.file_exists('.piaz'):
-            print("Creating .piaz directory")
-            self.sftp.mkdir('.piaz')
+        if not self.file_exists('.mahsa'):
+            print("Creating .mahsa directory")
+            self.sftp.mkdir('.mahsa')
 
     def apply(self):
         self.prepare()

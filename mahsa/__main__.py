@@ -1,5 +1,5 @@
 import sys
 
-from piaz.cli import main
+from mahsa.cli import main
 
 sys.exit(main())

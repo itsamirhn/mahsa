@@ -1,4 +1,4 @@
-# Piaz
+# Mahsa
 Simple tool for setting up Anti-GFW tools.
 
 ## Prerequisites
@@ -7,7 +7,7 @@ Simple tool for setting up Anti-GFW tools.
 ## Install
 Currently, pip is not supported, so you need to clone this repo to use it.
 ```bash
-git clone https://github.com/itsamirhn/piaz.git && cd piaz
+git clone https://github.com/itsamirhn/mahsa.git && cd mahsa
 ```
 then install dependencies
 ```bash
@@ -17,10 +17,10 @@ pip install -r requirements.txt
 ## Usage
 You only need to run these commands on your local machine.
 ```bash
-python -m piaz root@1.1.1.1  # Replace `1.1.1.1` with your server's IP address.
+python -m mahsa root@1.1.1.1  # Replace `1.1.1.1` with your server's IP address.
 ```
 
-Run `python -m piaz --help` to see all available options.
+Run `python -m mahsa --help` to see all available options.
 
 ## TODO
 - [ ] Support pip

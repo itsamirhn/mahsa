@@ -1,5 +1,5 @@
-from piaz.config import V2RayConfig, GostConfig, XUIConfig
-from piaz.options import parser
+from mahsa.config import V2RayConfig, GostConfig, XUIConfig
+from mahsa.options import parser
 
 
 def main():

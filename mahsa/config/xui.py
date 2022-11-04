@@ -1,10 +1,10 @@
-from piaz.utils import render_template
+from mahsa.utils import render_template
 from .docker import DockerComposeConfig
 
 
 class XUIConfig(DockerComposeConfig):
     def __init__(self, **kwargs):
-        super().__init__(image='x-ui/x-ui:latest', directory='.piaz/xui', **kwargs)
+        super().__init__(image='x-ui/x-ui:latest', directory='.mahsa/xui', **kwargs)
 
     def get_compose(self):
         return render_template('xui/docker-compose.yml.j2', image=self.image)
